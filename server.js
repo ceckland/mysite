@@ -16,6 +16,14 @@ mongoose.connect("mongodb+srv://admin-chris:WaSwag5y@cluster0.zygrl.mongodb.net/
   useUnifiedTopology: true
  })
 
+if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging') {
+  app.use(express.static('client/build'));
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname + '/client/build/index.html'));
+  });
+}
+
+
 app.use("/", require("./routes/noteRoute"));
 
 app.get("/", function(req, res){
