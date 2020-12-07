@@ -7,10 +7,6 @@ const port = process.env.PORT || 3001;
 app.use(cors());
 app.use(express.json());
 
-app.use("/users/", require("./routes/usersRoute"));
-app.use("/weather_truckee/", require("./routes/weatherRouteTruckee"));
-app.use("/weather_chico/", require("./routes/weatherRouteChico"));
-
 mongoose.connect("mongodb+srv://admin-chris:WaSwag5y@cluster0.zygrl.mongodb.net/notesDB", { 
   useNewUrlParser: true,
   useUnifiedTopology: true
@@ -23,6 +19,9 @@ if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging')
   });
 }
 
+app.use("/users/", require("./routes/usersRoute"));
+app.use("/weather_truckee/", require("./routes/weatherRouteTruckee"));
+app.use("/weather_chico/", require("./routes/weatherRouteChico"));
 app.use("/", require("./routes/noteRoute"));
 
 app.get("/", function(req, res){
