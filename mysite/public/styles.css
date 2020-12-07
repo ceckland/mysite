@@ -1,0 +1,33 @@
+body {
+     margin: 0px;
+   
+
+.ski-resort-title {
+     color: crimson;
+     text-decoration: underline;
+}
+
+.ski-resort-location {
+     color: crimson;
+}
+
+.ski-resort-data {
+     color: black;
+}
+
+.weather-title {
+     color: crimson;
+     text-decoration: underline;
+}
+
+.weather-data {
+     color: black;
+}
+
+.picture {
+     margin-top: 20px;
+}
+
+.nav-top {
+     margin-bottom: 30px;
+}
