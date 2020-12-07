@@ -23,7 +23,6 @@ if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging')
   });
 }
 
-
 app.use("/", require("./routes/noteRoute"));
 
 app.get("/", function(req, res){
