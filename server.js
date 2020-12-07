@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const cors = require("cors");
 const mongoose = require("mongoose");
+const port = process.env.PORT || 3001;
 
 app.use(cors());
 app.use(express.json());
@@ -17,11 +18,11 @@ mongoose.connect("mongodb+srv://admin-chris:WaSwag5y@cluster0.zygrl.mongodb.net/
 
 app.use("/", require("./routes/noteRoute"));
 
-
 app.get("/", function(req, res){
   res.send("HEY - AT ROOT OF SERVER !!!")
 });
 
-app.listen(3001, function(){
-  console.log("Express Server running on port 3001!");
-})
+app.listen(port, () => {
+    console.log(`Server started on port ${port}`);
+});
+
