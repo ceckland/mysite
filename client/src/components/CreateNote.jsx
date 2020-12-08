@@ -45,7 +45,7 @@ const CreateNote = () => {
             title:input.title,
             content:input.content
         }
-        axios.post("http://localhost:3001/create", newNote)
+        axios.post("/api/create", newNote)
         setInput({
         title: "",
         content: ""

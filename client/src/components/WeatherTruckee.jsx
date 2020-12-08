@@ -34,7 +34,7 @@ function WeatherTruckee() {
   
   useEffect(() => {
       const fetchData = async () => {
-      await axios.get("http://localhost:3001/weather_truckee/", {
+      await axios.get("api/weather_truckee/", {
            params: {
            city: city 
            }
