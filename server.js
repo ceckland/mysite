@@ -21,10 +21,10 @@ if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging')
 mongoUser = process.env.MONGO_USER;
 mongoPw = process.env.MONGO_PW;
 
-mongoose.connect("mongodb+srv://" + "mongoUser" + ":" + "mongoPw" + "@cluster0.zygrl.mongodb.net/notesDB", { 
+mongoose.connect("mongodb+srv://"+mongoUser+":"+mongoPw+"@cluster0.zygrl.mongodb.net/notesDB", { 
   useNewUrlParser: true,
   useUnifiedTopology: true
- })
+ })  
 
 app.use("/users/", require("./routes/usersRoute"));
 app.use("/weather_truckee/", require("./routes/weatherRouteTruckee"));
