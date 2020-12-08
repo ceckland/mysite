@@ -30,7 +30,7 @@ function WeatherChico() {
     const [loading, setLoading] = useState(true);
 
       useEffect(() => {
-      fetch("api/weather_chico/").then(res => {
+      fetch("api/weather_chico").then(res => {
         if (res.ok){
               setLoading(false);
               return res.json();            
