@@ -26,10 +26,10 @@ mongoose.connect("mongodb+srv://"+mongoUser+":"+mongoPw+"@cluster0.zygrl.mongodb
   useUnifiedTopology: true
  })  
 
-app.use("/users/", require("./routes/usersRoute"));
-app.use("/weather_truckee/", require("./routes/weatherRouteTruckee"));
-app.use("/weather_chico/", require("./routes/weatherRouteChico"));
-app.use("/", require("./routes/noteRoute"));
+app.use("/api/users/", require("./routes/usersRoute"));
+app.use("/api/weather_truckee/", require("./routes/weatherRouteTruckee"));
+app.use("/api/weather_chico/", require("./routes/weatherRouteChico"));
+app.use("/api", require("./routes/noteRoute"));
 
 app.get("/", function(req, res){
   res.send("HEY - AT ROOT OF SERVER !!!")
