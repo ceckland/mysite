@@ -30,10 +30,6 @@ app.use('/api/weather_truckee/', require("./routes/weatherRouteTruckee"));
 app.use('/api/notes/', require("./routes/noteRoute"));
 app.use('/api/create_note/', require("./routes/createNoteRoute"));
 
-app.get("/", function(req, res){
-  res.send("HEY - AT ROOT OF SERVER !!!")
-});
-
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
