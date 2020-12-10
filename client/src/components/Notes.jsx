@@ -15,7 +15,7 @@ const useStyles = makeStyles({
 
 const Notes = () => {
 
-     const classes = useStyles();
+    const classes = useStyles();
 
     const [notes, setNotes] = useState([{
         title: "",
@@ -23,7 +23,7 @@ const Notes = () => {
     }])
 
     useEffect(() => {
-        fetch("/notes").then(res => {
+        fetch('/api/notes').then(res => {
             if(res.ok) {
                 return res.json()
             }

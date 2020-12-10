@@ -22,7 +22,7 @@ function Users() {
     const [users, setUsers] = useState([]);
     
     useEffect(() => {
-      fetch("api/users/").then(res => {
+      fetch('/api/users/').then(res => {
         if (res.ok){
               return res.json()
         } 

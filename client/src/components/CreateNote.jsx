@@ -1,7 +1,7 @@
 import React from "react";
-import { makeStyles } from '@material-ui/core/styles';
 import { useState } from "react";
 import { Button, Grid, TextField, Typography } from "@material-ui/core";
+import { makeStyles } from '@material-ui/core/styles';
 import axios from "axios";
 
 const useStyles = makeStyles({
@@ -30,7 +30,6 @@ const CreateNote = () => {
 
     function handleChange(event) {
         const {name, value} = event.target;
-
         setInput(prevInput => {
             return {
                 ...prevInput,
@@ -45,12 +44,11 @@ const CreateNote = () => {
             title:input.title,
             content:input.content
         }
-        axios.post("/api/create", newNote)
+        axios.post('/api/create_note/', newNote)
         setInput({
         title: "",
         content: ""
         });
-
     }
 
     return (
@@ -63,7 +61,8 @@ const CreateNote = () => {
                         <div>
                             <TextField 
                                 id="outlined-basic" 
-                                label="Note Title" 
+                                label="Note Title"
+                                name="title" 
                                 variant="outlined"
                                 onChange={handleChange} 
                                 value={input.title}>
@@ -76,6 +75,7 @@ const CreateNote = () => {
                             <TextField
                                 id="outlined-multiline-flexible"
                                 label="Note Content"
+                                name="content"
                                 multiline
                                 rowsMax={12}
                                 className={classes.textArea} 
