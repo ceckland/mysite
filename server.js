@@ -28,17 +28,15 @@ mongoose.connect("mongodb+srv://"+mongoUser+":"+mongoPw+"@cluster0.zygrl.mongodb
   useUnifiedTopology: true
  })  
 
+app.use('/api/weather_chico/', require("./routes/weatherRouteChico"));
 app.use('/api/users/', require("./routes/usersRoute"));
 app.use('/api/weather_truckee/', require("./routes/weatherRouteTruckee"));
-app.use('/api/weather_chico/', require("./routes/weatherRouteChico"));
 app.use('/api/notes/', require("./routes/noteRoute"));
 app.use('/api/create_note/', require("./routes/createNoteRoute"));
 
 app.get("/", function(req, res){
   res.send("HEY - AT ROOT OF SERVER !!!")
 });
-
-
 
 app.listen(port, () => {
     console.log(`Server started on port ${port}`);
