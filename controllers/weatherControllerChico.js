@@ -1,6 +1,7 @@
 const express = require("express");
 const https = require("https");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 const app = express();
 
 app.use(bodyParser.urlencoded({
@@ -9,6 +10,7 @@ app.use(bodyParser.urlencoded({
 
 exports.weatherControllerChico = (req, res) => {
 
+  console.log("In weather controller Chico");
   const query = "Chico";
   const apiKey = "ec56a4f85f4d58f06fce8cbb402d3d09";
   const unit = "imperial";
@@ -16,6 +18,7 @@ exports.weatherControllerChico = (req, res) => {
 
   https.get(url, function(response) {
 
+    console.log("In weather controller get function Chico");
     response.on("data", function(data) {
 
       console.log(data);
