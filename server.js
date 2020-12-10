@@ -15,11 +15,9 @@ if (process.env.NODE_ENV !== 'production') {
 if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging') {
   app.use(express.static('client/build'));
 }
+var url = process.env.MONGO_URI;
 
-mongoUser = process.env.MONGO_USER;
-mongoPw = process.env.MONGO_PW;
-
-mongoose.connect("mongodb+srv://" + mongoUser + ":" + mongoPw +"@cluster0.zygrl.mongodb.net/notesDB", { 
+mongoose.connect(url, { 
   useNewUrlParser: true,
   useUnifiedTopology: true
  })  
