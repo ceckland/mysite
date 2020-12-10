@@ -33,9 +33,11 @@ function WeatherChico() {
       fetch('/api/weather_chico').then(res => {
         if (res.ok){
               setLoading(false);
+              console.log("In res.ok path!")
               return res.json();            
         } 
       }).then(jsonRes => setData(jsonRes))
+              console.log(data)
     }, []);
   
 
