@@ -11,6 +11,13 @@ if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
 }
 
+if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging') {
+  app.use(express.static('client/build'));
+  app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  });
+}
+
 mongoUser = process.env.MONGO_USER;
 mongoPw = process.env.MONGO_PW;
 
@@ -29,12 +36,7 @@ app.get("/", function(req, res){
   res.send("HEY - AT ROOT OF SERVER !!!")
 });
 
-if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging') {
-  app.use(express.static('client/build'));
-  app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-});
-}
+
 
 app.listen(port, () => {
     console.log(`Server started on port ${port}`);
