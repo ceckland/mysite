@@ -10,18 +10,15 @@ app.use(bodyParser.urlencoded({
 
 exports.weatherControllerChico = (req, res) => {
 
-  console.log("In weather controller Chico");
   const query = "Chico";
   const apiKey = "ec56a4f85f4d58f06fce8cbb402d3d09";
   const unit = "imperial";
-  const url = "https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?q="+query+"&units="+unit+"&appid="+apiKey+""
+  const url = "https://api.openweathermap.org/data/2.5/weather?q="+query+"&units="+unit+"&appid="+apiKey+""
 
   https.get(url, function(response) {
 
-    console.log("In weather controller get function Chico");
-    response.on("data", function(data) {
+      response.on("data", function(data) {
 
-      console.log(data);
       const weatherData = JSON.parse(data);
       const current_weather = weatherData.weather[0].main;
       const description = weatherData.weather[0].description;
