@@ -1,11 +1,12 @@
 import React, { useState, useEffect }  from "react";
 import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
+import { Avatar, Card, CardContent, CardHeader, Grid, Typography } from '@material-ui/core';
+import { green } from '@material-ui/core/colors';
 
 const useStyles = makeStyles({
+  avatar: {
+    backgroundColor: green[500],
+  },
   title: {
     fontSize: 18,
     textDecoration: 'underline',
@@ -44,7 +45,15 @@ function WeatherChico() {
     <Grid item xs={12} sm={6} md={4} lg={4} xl={2}>
     <Card className={classes.card}>
     <CardContent>
-      <Typography className={classes.title} gutterBottom>Chico Weather</Typography>
+      <CardHeader
+          avatar={
+            <Avatar aria-label="ski" className={classes.avatar}>
+              W
+            </Avatar>
+            }
+            titleTypographyProps={{variant:'h6'}}
+            title="Chico Weather"
+          />
       <div>
         { 
           loading ? <Typography> Loading.... </Typography>

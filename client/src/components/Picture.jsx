@@ -1,12 +1,13 @@
 import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
+import { Avatar, Card, CardContent, CardHeader, Grid, Typography } from '@material-ui/core';
+import { purple } from '@material-ui/core/colors';
 
 const useStyles = makeStyles({
-  title: {
+  avatar: {
+    backgroundColor: purple[500],
+  },
+    title: {
     fontSize: 18,
     textDecoration: 'underline',
   },
@@ -24,9 +25,15 @@ const Picture = () => {
         <Grid item xs={12} sm={6} md={4} lg={4} xl={2}>
             <Card className={classes.card}>
                   <CardContent>
-                    <Typography className={classes.title} gutterBottom>
-                        Word of the Day
-                    </Typography>
+                    <CardHeader
+                        avatar={
+                        <Avatar aria-label="ski" className={classes.avatar}>
+                        D
+                        </Avatar>
+                        }
+                        titleTypographyProps={{variant:'h6'}}
+                        title="Media Card"
+                    />
                     <Typography variant="h5" gutterBottom>
                         blurbiful
                     </Typography>

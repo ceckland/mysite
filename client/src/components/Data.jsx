@@ -1,11 +1,12 @@
 import React, { useState, useEffect }  from "react";
 import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
+import { Avatar, Card, CardContent, CardHeader, Grid, Typography } from '@material-ui/core';
+import { red } from '@material-ui/core/colors';
 
 const useStyles = makeStyles({
+  avatar: {
+    backgroundColor: red[500],
+  },
   title: {
     fontSize: 18,
     textDecoration: 'underline',
@@ -38,7 +39,15 @@ function Data() {
     <Grid item xs={12} sm={6} md={4} lg={4} xl={2}>
       <Card className={classes.card}>
         <CardContent>
-          <Typography className={classes.title} gutterBottom>Val D'Isere Ski Forecast</Typography>
+        <CardHeader
+            avatar={
+              <Avatar aria-label="ski" className={classes.avatar}>
+                S
+              </Avatar>
+              }
+            titleTypographyProps={{variant:'h6'}}
+            title="Val D'Isere Ski Forecast"
+          />
             <div>
               { 
                 loading ? <Typography> Loading.... </Typography>
@@ -68,5 +77,7 @@ export default Data
 // api.weatherunlocked.com/api/resortforecast/333019?app_id=634c2691&app_key=e3f601305c5bb64312e4e5dc8ac0baef
 
 // http://www.weatherunlocked.com/Images/icons/2/Sunny.png
+
+// <Typography className={classes.title} gutterBottom>Val D'Isere Ski Forecast</Typography>
 
  

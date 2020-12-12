@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Button, Card, CardContent, Grid, Typography } from "@material-ui/core";
+import { Avatar, Button, Card, CardContent, CardHeader, Grid, Typography } from "@material-ui/core";
+import { orange } from '@material-ui/core/colors';
 
 const useStyles = makeStyles({
+  avatar: {
+    backgroundColor: orange[500],
+  },
   title: {
     fontSize: 18,
     textDecoration: 'underline',
@@ -74,7 +78,15 @@ function Lotto() {
     <Grid item xs={12} sm={6} md={4} lg={4} xl={2}>
         <Card className={classes.card}>
             <CardContent>
-                <Typography className={classes.title} gutterBottom>SuperLotto Numbers</Typography>
+              <CardHeader
+                avatar={
+                  <Avatar aria-label="ski" className={classes.avatar}>
+                    L
+                  </Avatar>
+                }
+                titleTypographyProps={{variant:'h6'}}
+                title="SuperLotto Numbers"
+              />
                 
                 <Typography variant="body1" align="left" gutterBottom>{mainNumbers[0]}</Typography>
                 <Typography variant="body1" align="left" gutterBottom>{mainNumbers[1]}</Typography> 

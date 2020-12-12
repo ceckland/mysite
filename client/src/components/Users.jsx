@@ -1,12 +1,13 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
+import { Avatar, Card, CardContent, CardHeader, Grid, Typography } from '@material-ui/core';
+import { yellow } from '@material-ui/core/colors';
 
 const useStyles = makeStyles({
+  avatar: {
+    backgroundColor: yellow[500],
+  },
   title: {
     fontSize: 18,
     textDecoration: 'underline',
@@ -34,7 +35,15 @@ function Users() {
         <Grid item xs={12} sm={6} md={4} lg={4} xl={2}>
           <Card className={classes.card}>
             <CardContent>
-            <Typography className={classes.title} gutterBottom>Hello</Typography>
+            <CardHeader
+              avatar={
+                <Avatar aria-label="ski" className={classes.avatar}>
+                  U
+                </Avatar>
+                }
+                titleTypographyProps={{variant:'h6'}}
+                title="Users Fetch"
+            />
               <Typography variant="body1"> {users.map((user, index) => <li key={index}>{user}</li>)} </Typography>
               </CardContent>
           </Card>

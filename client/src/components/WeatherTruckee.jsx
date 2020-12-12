@@ -1,9 +1,13 @@
 import React, { useState, useEffect }  from "react";
 import { makeStyles } from '@material-ui/core/styles';
-import { Button, Card, CardContent, Grid, TextField, Typography } from "@material-ui/core";
+import { Avatar, Button, Card, CardContent, CardHeader, Grid, TextField, Typography } from '@material-ui/core';
+import { blue } from '@material-ui/core/colors';
 import axios from "axios";
 
 const useStyles = makeStyles({
+  avatar: {
+    backgroundColor: blue[500],
+  },
   title: {
     fontSize: 18,
     textDecoration: 'underline',
@@ -72,7 +76,15 @@ function WeatherTruckee() {
     <Grid item xs={12} sm={6} md={4} lg={4} xl={2}>
     <Card className={classes.card}>
       <CardContent>
-        <Typography className={classes.title} gutterBottom>Weather In?</Typography>
+        <CardHeader
+          avatar={
+            <Avatar aria-label="ski" className={classes.avatar}>
+              W
+            </Avatar>
+            }
+            titleTypographyProps={{variant:'h6'}}
+            title="Weather In ???"
+          />
         
         <div>
         
