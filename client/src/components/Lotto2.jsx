@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Button, Card, CardContent, Grid, Typography } from "@material-ui/core";
 
@@ -6,6 +6,9 @@ const useStyles = makeStyles({
   title: {
     fontSize: 18,
     textDecoration: 'underline',
+  },
+  mega: {
+    margin: '15px 0px 15px 0px;',
   },
   card: {
     height: '100%'
@@ -21,52 +24,40 @@ const useStyles = makeStyles({
   },
 });
 
-function Lotto() {
+function Lotto2() {
 
-    const classes = useStyles();
-    let randomNumber = 0;
+    const [mainNumbers, setMainNumbers] = useState([]);
+    const [megaNumber, setMegaNumber] = useState([]);
+    const classes = useStyles(); 
+    const [count, setCount] = useState(0);
+    const rando = useRef(0);
+    let clickCount = 0;
     const mainNums = [];
     const megaNum = [];
-    
-    const [mainNumbers, setMainNumbers] = useState(() => {
-      const initialNumbers = getMainNumbers();
-      return initialNumbers;
-      });
 
-    const [megaNumber, setMegaNumber] = useState(() => {
-      const initialNumber = getMegaNumber();
-      return initialNumber;
-      });
-
-    function getMainNumbers() {
-      var mains = [];
+    useEffect(() => {
       
-      for (var i = 0; i < 5; i++) {
-        randomNumber = (Math.floor(Math.random() * 46)) + 1;
-        mains.push(randomNumber);
-       }
-        return mains;
+        async function getNumbers() {
+            for (var i = 0; i < 5; i++) {
+            rando.current = (Math.floor(Math.random() * 46)) + 1;
+            mainNums.push(rando.current);
+            }
+        
+        megaNum.push(Math.floor(Math.random() * 26) + 1);
+        setMainNumbers(mainNums);
+        setMegaNumber(megaNum);
     }
 
-    function getMegaNumber() {
-      var mega = [];   
-      mega.push(Math.floor(Math.random() * 26) + 1); 
-      return mega;
-    }
+    getNumbers();
 
-    function getNumbers() {
-      for (var i = 0; i < 5; i++) {
-       randomNumber = (Math.floor(Math.random() * 46)) + 1;
-       mainNums.push(randomNumber);
-       }
-      megaNum.push(Math.floor(Math.random() * 26) + 1);
-    }
-    
+  }, [count]);
+
+
     function handleClick(event) {
-      event.preventDefault(); 
-      getNumbers();      
-      setMainNumbers(mainNums);
-      setMegaNumber(megaNum);
+      event.preventDefault();  
+      clickCount++;  
+      setCount(clickCount);    
+      
     }
 
   return (
@@ -75,15 +66,13 @@ function Lotto() {
         <Card className={classes.card}>
             <CardContent>
                 <Typography className={classes.title} gutterBottom>SuperLotto Numbers</Typography>
-                
                 <Typography variant="body1" align="left" gutterBottom>{mainNumbers[0]}</Typography>
                 <Typography variant="body1" align="left" gutterBottom>{mainNumbers[1]}</Typography> 
                 <Typography variant="body1" align="left" gutterBottom>{mainNumbers[2]}</Typography>  
                 <Typography variant="body1" align="left" gutterBottom>{mainNumbers[3]}</Typography> 
                 <Typography variant="body1" align="left" gutterBottom>{mainNumbers[4]}</Typography>
                 <Typography className={classes.mega} variant="body1" align="left" gutterBottom>Mega Number:   {megaNumber[0]}</Typography>
-                
-                <Button className={classes.button} variant="contained" onClick={handleClick}>GENERATE NUMBERS</Button>
+                <Button className={classes.button} variant="contained" onClick={handleClick}>GENERATE NEW NUMBERS</Button>
            </CardContent>
         </Card> 
     </Grid>    
@@ -91,4 +80,25 @@ function Lotto() {
     );  
 } 
 
-export default Lotto
+export default Lotto2
+
+
+
+    //   useEffect(() => {
+        
+    //     let randomNumber = 0;
+    //     const getNumbers = async () => {       
+      
+    //     for (var i = 0; i < 5; i++) {
+    //     randomNumber = (Math.floor(Math.random() * 46)) + 1;
+    //     mainNums.push(randomNumber);
+    //     }
+      
+    //     megaNum.push(Math.floor(Math.random() * 26) + 1);
+  
+    // };
+    //     getNumbers();
+    //     setMainNumbers(mainNums);
+    //     setMegaNumber(megaNum);
+
+    // }, [count]);

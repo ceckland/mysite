@@ -35,7 +35,7 @@ function Users() {
           <Card className={classes.card}>
             <CardContent>
             <Typography className={classes.title} gutterBottom>Hello</Typography>
-              <Typography variant="body1"> {users.map(user => <li>{user}</li>)} </Typography>
+              <Typography variant="body1"> {users.map((user, index) => <li key={index}>{user}</li>)} </Typography>
               </CardContent>
           </Card>
         </Grid>

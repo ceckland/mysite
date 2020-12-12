@@ -12,7 +12,13 @@ const useStyles = makeStyles({
     height: '100%'
   },
   button: {
-    margin: '15px 0px 15px 0px;'
+    background: 'linear-gradient(195deg, #00FF7F 30%, #00008B 90%)',
+    borderRadius: 3,
+    border: 0,
+    color: 'white',
+    height: 48,
+    margin: '15px 0px 15px 0px;',
+    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
   },
 });
 
