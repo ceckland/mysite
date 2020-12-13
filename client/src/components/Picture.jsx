@@ -24,15 +24,31 @@ const useStyles = makeStyles({
   }
 });
 
-const Picture = () => {
+var clicks = 0;
+var golfImage = img1;
 
+const Picture = () => {
+    
     const classes = useStyles();
     const [image, setImage] = useState(img1);
 
     function handleClick(event) {
         event.preventDefault();
-
-        setImage(img3);
+        clicks++;
+          if (clicks === 1) {
+            golfImage = img2;
+          } 
+          if (clicks === 2) {
+            golfImage = img3;
+          } 
+          if (clicks === 3) {
+            golfImage = img4;
+          } 
+          if (clicks === 4) {
+            golfImage = img1;
+            clicks=0;
+          } 
+        setImage(golfImage);
       }
     
     return (
