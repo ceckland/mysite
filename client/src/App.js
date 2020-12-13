@@ -9,7 +9,7 @@ import About from './components/About';
 import Notes from './components/Notes';
 import CreateNote from './components/CreateNote';
 import Contact from './components/Contact';
-import logo from './angryimg.png';
+import logo from './images/angryimg.png';
 
 // Theme overrides.
 // 
