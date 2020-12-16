@@ -49,11 +49,13 @@ const Home = () => {
                 <Weather
                  city="Chico" 
                  fields={false}
+                 title="Chico Weather"
                 />
                 <Picture />
                 <Weather 
                   city="Truckee"
                   fields={true}
+                  title="Weather In ???"
                 />
                 <Lotto />
                 <Users />

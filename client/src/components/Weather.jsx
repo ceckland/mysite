@@ -68,7 +68,6 @@ function Weather(props) {
   function handleClick(event) {
         event.preventDefault();
         setCity(input);
-             
   }
 
  return (
@@ -83,7 +82,7 @@ function Weather(props) {
             </Avatar>
             }
             titleTypographyProps={{variant:'h6'}}
-            title="Weather"
+            title={props.title}
           />
         
         <div>     
