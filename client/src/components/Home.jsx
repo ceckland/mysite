@@ -2,8 +2,7 @@ import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Data from './Data';
-import WeatherChico from "./WeatherChico";
-import WeatherTruckee from "./WeatherTruckee";
+import Weather from "./Weather";
 import Picture from "./Picture";
 import Lotto from "./Lotto";
 import Users from "./Users";
@@ -47,12 +46,12 @@ const Home = () => {
         <Grid container alignItems="stretch" spacing={2}>    
                 
                 <Data />
-                <WeatherTruckee
+                <Weather
                  city="Chico" 
                  fields={false}
                 />
                 <Picture />
-                <WeatherTruckee 
+                <Weather 
                   city="Truckee"
                   fields={true}
                 />
