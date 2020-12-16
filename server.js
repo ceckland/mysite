@@ -22,9 +22,8 @@ mongoose.connect(url, {
   useUnifiedTopology: true
  })  
 
-app.use('/api/weather_chico/', require("./routes/weatherRouteChico"));
 app.use('/api/users/', require("./routes/usersRoute"));
-app.use('/api/weather_truckee/', require("./routes/weatherRouteTruckee"));
+app.use('/api/weather/', require("./routes/weatherRoute"));
 app.use('/api/notes/', require("./routes/noteRoute"));
 app.use('/api/create_note/', require("./routes/createNoteRoute"));
 

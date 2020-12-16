@@ -7,7 +7,7 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-exports.weatherControllerTruckee = (req, res) => {
+exports.weatherController = (req, res) => {
 
   const param = req.query.city;
   const query = param;
