@@ -11,7 +11,7 @@ exports.weatherController = (req, res) => {
 
   const param = req.query.city;
   const query = param;
-  const apiKey = "ec56a4f85f4d58f06fce8cbb402d3d09";
+  const apiKey = process.env.OPEN_WEATHER_APIKEY;
   const unit = "imperial";
   const url = "https://api.openweathermap.org/data/2.5/weather?q=" + query + "&units=" + unit + "&appid=" + apiKey + ""
 
