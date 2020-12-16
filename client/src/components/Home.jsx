@@ -47,9 +47,15 @@ const Home = () => {
         <Grid container alignItems="stretch" spacing={2}>    
                 
                 <Data />
-                <WeatherChico />
+                <WeatherTruckee
+                 city="Chico" 
+                 fields={false}
+                />
                 <Picture />
-                <WeatherTruckee />
+                <WeatherTruckee 
+                  city="Truckee"
+                  fields={true}
+                />
                 <Lotto />
                 <Users />
 

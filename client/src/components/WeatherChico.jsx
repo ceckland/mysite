@@ -2,6 +2,7 @@ import React, { useState, useEffect }  from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import { Avatar, Card, CardContent, CardHeader, Grid, Typography } from '@material-ui/core';
 import { green } from '@material-ui/core/colors';
+import axios from "axios";
 
 const useStyles = makeStyles({
   avatar: {
@@ -16,9 +17,11 @@ const useStyles = makeStyles({
   }
 });
 
-function WeatherChico() {
+function WeatherChico(props) {
 
   const classes = useStyles();
+  const [loading, setLoading] = useState(true);
+  const [city, setCity] = useState(props.city);
   const [data, setData] = useState(
     {
         current: "",
@@ -27,17 +30,24 @@ function WeatherChico() {
         feels: "",
         imgIcon:""
     });
-  
-    const [loading, setLoading] = useState(true);
 
       useEffect(() => {
-      fetch('/api/weather_chico').then(res => {
-        if (res.ok){
-              setLoading(false);
-              return res.json();            
-        } 
-      }).then(jsonRes => setData(jsonRes))
-      }, []);
+      const fetchData = async () => {
+      await axios.get('/api/weather_chico/', {
+           params: {
+           city: city 
+           }
+         }).then((result) => {
+           setData(result.data); 
+           setLoading(false);
+         }, (error) => {
+           console.log(error);
+         });
+    };
+ 
+    fetchData();
+  
+  }, [city]);  
   
 
  return (

@@ -26,12 +26,12 @@ const useStyles = makeStyles({
   },
 });
 
-function WeatherTruckee() {
+function WeatherTruckee(props) {
  
   const classes = useStyles();
   const [loading, setLoading] = useState(true);
-  const [input, setInput] = useState("Truckee");
-  const [city, setCity] = useState("Truckee");
+  const [input, setInput] = useState(props.city);
+  const [city, setCity] = useState(props.city);
   const [data, setData] = useState(
     
     {
@@ -83,17 +83,18 @@ function WeatherTruckee() {
             </Avatar>
             }
             titleTypographyProps={{variant:'h6'}}
-            title="Weather In ???"
+            title="Weather"
           />
         
-        <div>
-        
-        <form>
+        <div>     
+            <form>
               <div>
-                <TextField onChange={handleChange} name="city" value={input} variant="outlined"></TextField>
+                { (props.fields === true) ? <TextField onChange={handleChange} name="city" value={input} variant="outlined"></TextField> : null }
               </div>              
-                <Button className={classes.button} variant="contained" onClick={handleClick}>SELECT CITY</Button>
-              </form>        
+              <div>
+                { (props.fields === true) ? <Button className={classes.button} variant="contained" onClick={handleClick}>SELECT CITY</Button> : null }
+              </div>  
+            </form>        
         </div>
 
       <div>
