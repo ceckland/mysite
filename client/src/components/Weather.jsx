@@ -1,62 +1,124 @@
-import React, { useState, useEffect }  from "react";
-const axios = require('axios').default;
+import React, { useState, useEffect } from "react";
+import { makeStyles } from '@material-ui/core/styles';
+import { Avatar, Button, Card, CardContent, CardHeader, Grid, TextField, Typography } from '@material-ui/core';
+import { blue } from '@material-ui/core/colors';
+import axios from "axios";
 
-var imgIcon = "";
+const useStyles = makeStyles({
+  avatar: {
+    backgroundColor: blue[500],
+  },
+  title: {
+    fontSize: 18,
+    textDecoration: 'underline',
+  },
+  card: {
+    height: '100%'
+  },
+  button: {
+    background: 'linear-gradient(195deg, #00FF7F 30%, #00008B 90%)',
+    borderRadius: 3,
+    border: 0,
+    color: 'white',
+    height: 48,
+    margin: '15px 0px 15px 0px;',
+    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+  },
+});
 
-function Weather() {
+function Weather(props) {
  
-  const [data, setData] = useState(null);
+  const classes = useStyles();
   const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await axios.get(
-        "http://api.openweathermap.org/data/2.5/weather?zip=95926,us&units=imperial&appid=ec56a4f85f4d58f06fce8cbb402d3d09"
-        ); 
-      const data = await response.data;
-      setData(data);
-      imgIcon = data.weather[0].icon;
-      setLoading(false);
-    };
-      fetchData();
-  }, []);
+  const [input, setInput] = useState(props.city);
+  const [city, setCity] = useState(props.city);
+  const [data, setData] = useState(
+    
+    {
+        current: "",
+        desc: "",
+        temp: "",
+        feels: "",
+        imgIcon:""
+    });
   
+  useEffect(() => {
+      const fetchData = async () => {
+      await axios.get('/api/weather_truckee/', {
+           params: {
+           city: city 
+           }
+         }).then((result) => {
+           setData(result.data); 
+           setLoading(false);
+         }, (error) => {
+           console.log(error);
+         });
+    };
+ 
+    fetchData();
+  
+  }, [city]);    
+
+  function handleChange(event) {
+      const value = event.target.value;
+      setInput(value);
+  }
+
+  function handleClick(event) {
+        event.preventDefault();
+        setCity(input);
+             
+  }
 
  return (
-    <div className="col-4">
-      <div className="weather-title"><h5>Chico Weather</h5></div>
+    
+    <Grid item xs={12} sm={6} md={4} lg={4} xl={2}>
+    <Card className={classes.card}>
+      <CardContent>
+        <CardHeader
+          avatar={
+            <Avatar aria-label="weather" className={classes.avatar}>
+              W
+            </Avatar>
+            }
+            titleTypographyProps={{variant:'h6'}}
+            title="Weather"
+          />
+        
+        <div>     
+            <form>
+              <div>
+                { (props.fields === true) ? <TextField onChange={handleChange} name="city" value={input} variant="outlined"></TextField> : null }
+              </div>              
+              <div>
+                { (props.fields === true) ? <Button className={classes.button} variant="contained" onClick={handleClick}>SELECT CITY</Button> : null }
+              </div>  
+            </form>        
+        </div>
+
       <div>
         { 
-          loading ? <div> Loading.... </div>
+          loading ? <Typography> Loading.... </Typography>
            : 
            <div>
-             <div className="weather-data">
-              <em>
-                <p>Current Weather: {data.weather[0].main}.</p>
-                <p>Description: {data.weather[0].description}.</p> 
-                <p>Temperature: {data.main.temp}</p>  
-                <p>Feels Like Temp: {data.main.feels_like}</p> 
-                <p><img src={"http://openweathermap.org/img/wn/" + imgIcon + ".png"} alt="Weather Icon"></img></p>       
-              </em>
+             <div>
+              
+                <Typography variant="body1" align="left" gutterBottom>Current Weather: {data.current}.</Typography>
+                <Typography variant="body1" align="left" gutterBottom>Description: {data.desc}.</Typography> 
+                <Typography variant="body1" align="left" gutterBottom>Temperature: {data.temp}</Typography>  
+                <Typography variant="body1" align="left" gutterBottom>Feels Like Temp: {data.feels}</Typography> 
+                <Typography variant="body1" align="left" gutterBottom><img src={data.imgIcon} alt="Weather Icon"></img></Typography>       
+              
             </div>
            </div>
            }
       </div>
-    </div>
+      </CardContent>
+    </Card>
+  </Grid>
+    
   );
-};
+}
 
 export default Weather
-
-// useEffect(() => {
-//     const fetchData = async () => {
-//       const response = await fetch(
-//         "http://api.openweathermap.org/data/2.5/weather?zip=95926,us&units=imperial&appid=ec56a4f85f4d58f06fce8cbb402d3d09"
-//         ); 
-//       const data = await response.json();
-//       setData(data);
-//       imgIcon = data.weather[0].icon;
-//       setLoading(false);
-//     };
-//       fetchData();
-//   }, []);
