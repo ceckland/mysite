@@ -54,10 +54,8 @@ function Weather(props) {
          }, (error) => {
            console.log(error);
          });
-    };
- 
+    }
     fetchData();
-  
   }, [city]);    
 
   function handleChange(event) {

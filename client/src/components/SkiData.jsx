@@ -33,13 +33,16 @@ function SkiData() {
     });
  
   useEffect(() => {
-    axios.get('/api/ski/')
-     .then((result) => {
-        setData(result.data); 
-        setLoading(false);
+    const fetchData = async () => {
+        await axios.get('/api/ski/')
+          .then((result) => {
+          setData(result.data); 
+          setLoading(false);
         }, (error) => {
            console.log(error);
         });
+    }
+    fetchData();
   }, []);  
 
   return (
