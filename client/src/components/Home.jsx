@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import Data from './Data';
+import SkiData from './SkiData';
 import Weather from "./Weather";
 import Picture from "./Picture";
 import Lotto from "./Lotto";
@@ -45,7 +45,7 @@ const Home = () => {
 
         <Grid container alignItems="stretch" spacing={2}>    
                 
-                <Data />
+                <SkiData />
                 <Weather
                  city="Chico" 
                  fields={false}

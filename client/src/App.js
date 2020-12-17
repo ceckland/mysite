@@ -9,7 +9,7 @@ import About from './components/About';
 import Notes from './components/Notes';
 import CreateNote from './components/CreateNote';
 import Contact from './components/Contact';
-import logo from './images/angryimg.png';
+import logo from './images/subaru-wrx-03.jpg';
 
 // Theme overrides.
 // 
@@ -19,16 +19,16 @@ const theme = createMuiTheme({
     default: ' #e9fbcf'
     }
   }
-//  overrides: {
-//    MuiCssBaseline: {
-//      "@global": {
-//        body: {
-//          backgroundImage: `url(${logo})`
-//            'url(https://designshack.net/wp-content/uploads/gradient-background.jpg)'
-//        }
-//      }
-//    }
-//  }
+//   overrides: {
+//     MuiCssBaseline: {
+//       "@global": {
+//         body: {
+//           backgroundImage: `url(${logo})`
+// //            'url(https://designshack.net/wp-content/uploads/gradient-background.jpg)'
+//         }
+//       }
+//     }
+//   }
  });
 
 function App() {

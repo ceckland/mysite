@@ -12,10 +12,20 @@ exports.skiController = (req, res) => {
   const appKey = process.env.SKI_APPKEY;
   const appId = process.env.SKI_APPID;
   const url = "https://api.weatherunlocked.com/api/resortforecast/333019?hourly_interval=12&app_id=" + appId + "&app_key=" + appKey + ""; 
-   
-  https.get(url, function(res) {
 
-    res.on("data", function(data) {
+  https.get(url, "JSON", function(response) {
+    
+    var data;  
+    
+    response.on("data", function(chunk) {
+      if (!data) {
+        data = chunk;
+      } else {
+        data += chunk;
+      }
+    });
+
+    response.on("end", function() {
 
       const skiData = JSON.parse(data);
       const forecast_lower = skiData.forecast[0].base.wx_desc;
