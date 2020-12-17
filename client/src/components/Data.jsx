@@ -22,11 +22,14 @@ function Data() {
   const [loading, setLoading] = useState(true);
   const classes = useStyles();
 
+  const appKey = process.env.REACT_APP_SKI_APPKEY;
+  const appId = process.env.REACT_APP_SKI_APPID;
+  const url = "https://api.weatherunlocked.com/api/resortforecast/333019?hourly_interval=12&app_id=" + appId + "&app_key=" + appKey + "";
+  console.log(url);
+  
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(
-        "https://api.weatherunlocked.com/api/resortforecast/333019?hourly_interval=12&app_id=634c2691&app_key=e3f601305c5bb64312e4e5dc8ac0baef"
-        ); 
+      const response = await fetch(url); 
       const data = await response.json();
       setData(data);
       setLoading(false);
@@ -72,12 +75,3 @@ function Data() {
 };
 
 export default Data
-
-
-// api.weatherunlocked.com/api/resortforecast/333019?app_id=634c2691&app_key=e3f601305c5bb64312e4e5dc8ac0baef
-
-// http://www.weatherunlocked.com/Images/icons/2/Sunny.png
-
-// <Typography className={classes.title} gutterBottom>Val D'Isere Ski Forecast</Typography>
-
- 

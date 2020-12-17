@@ -15,6 +15,7 @@ if (process.env.NODE_ENV !== 'production') {
 if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging') {
   app.use(express.static('client/build'));
 }
+
 var url = process.env.MONGO_URI;
 
 mongoose.connect(url, { 
@@ -23,6 +24,7 @@ mongoose.connect(url, {
  })  
 
 app.use('/api/users/', require("./routes/usersRoute"));
+app.use('/api/ski/', require("./routes/skiRoute"));
 app.use('/api/weather/', require("./routes/weatherRoute"));
 app.use('/api/notes/', require("./routes/noteRoute"));
 app.use('/api/create_note/', require("./routes/createNoteRoute"));

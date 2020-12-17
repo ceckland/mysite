@@ -13,7 +13,7 @@ exports.weatherController = (req, res) => {
   const query = param;
   const apiKey = process.env.OPEN_WEATHER_APIKEY;
   const unit = "imperial";
-  const url = "https://api.openweathermap.org/data/2.5/weather?q=" + query + "&units=" + unit + "&appid=" + apiKey + ""
+  const url = "https://api.openweathermap.org/data/2.5/weather?q=" + query + "&units=" + unit + "&appid=" + apiKey + "";
 
   https.get(url, function(response) {
 
