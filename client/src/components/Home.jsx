@@ -36,8 +36,8 @@ const Home = () => {
                 <Typography className={classes.body} variant="body1">
                     Welcome to my website!!  This is primarily a place for me to play around 
                     with coding while I learn various technologies and techniques.  Right now 
-                    it is a MERN app that is deployed to Heroku.   Apologies for any bugs or 
-                    issues that are on the site.  Enjoy! 
+                    it is a MERN app utilizing Material UI for styling that is deployed to Heroku.   
+                    Apologies for any bugs or issues that are on the site.  Enjoy! 
                 </Typography>
             </Grid>
         
