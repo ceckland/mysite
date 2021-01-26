@@ -34,10 +34,10 @@ const Home = () => {
             
             <Grid item xs={12}>
                 <Typography className={classes.body} variant="body1">
-                    Home: Lorem ipsum dolor sit amet consectetur 
-                    adipisicing elit. Libero, molestias cum doloremque ex 
-                    repudiandae illum cupiditate culpa accusantium delectus obcaecati, nam, 
-                    suscipit minima aliquid excepturi aperiam tempora quibusdam impedit facere?
+                    Welcome to my website!!  This is primarily a place for me to play around 
+                    with coding while I learn various technologies and techniques.  Right now 
+                    it is a MERN app that is deployed to Heroku.   Apologies for any bugs or 
+                    issues that are on the site.  Enjoy! 
                 </Typography>
             </Grid>
         
