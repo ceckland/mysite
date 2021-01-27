@@ -16,7 +16,7 @@ import logo from './images/subaru-wrx-03.jpg';
 const theme = createMuiTheme({
   palette: {
     background: {
-    default: ' #e9fbcf'
+    default: '#d0efff'
     }
   }
 //   overrides: {
